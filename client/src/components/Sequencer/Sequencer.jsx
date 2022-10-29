@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { steps, lineMap, initialState } from "./initial";
 import Grid from "../styled-components/Grid";
-import Bar from "../styled-components/Nav-Bar";
+import NavBar from "../styled-components/Nav-Bar";
 import PlayButton from "../buttons/PlayButton";
 import StopButton from "../buttons/StopButton";
 import Volume from "../sliders/Volume";
@@ -162,7 +162,7 @@ function Sequencer({ player, socket }) {
 
   return (
     <div className="Sequencer">
-      <Bar>
+      <NavBar>
         <PlayButton
           playing={playing}
           onClick={() => handleSetPlaying(!playing)}
@@ -200,7 +200,7 @@ function Sequencer({ player, socket }) {
           onMouseEnter={() => setIsShown(true)}
           onMouseLeave={() => setIsShown(false)}
         />
-      </Bar>
+      </NavBar>
       <RightBar />
       <LeftIconBar
         pianoActive={pianoActive}
