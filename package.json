@@ -2,7 +2,7 @@
   "name": "sequencer",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./socket/index.js",
   "scripts": {
     "start": "node ./socket/index.js",
     "socket": "nodemon ./socket/index.js",
