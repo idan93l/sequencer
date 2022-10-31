@@ -23,6 +23,12 @@
   },
   "homepage": "https://github.com/idan93l/sequencer#readme",
   "dependencies": {
-    "concurrently": "^7.5.0"
+    "concurrently": "^7.5.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "http": "^0.0.1-security",
+    "nodemon": "^2.0.20",
+    "path": "^0.12.7",
+    "socket.io": "^4.5.3"
   }
 }
