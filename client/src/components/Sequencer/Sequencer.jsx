@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { steps, lineMap, initialState } from "./initial";
-import Grid from "../styled-components/Grid";
-import NavBar from "../styled-components/Nav-Bar";
+import Grid from "./Grid";
+import NavBar from "../NavBar/NavBar";
 import PlayButton from "../buttons/PlayButton";
-import StopButton from "../buttons/StopButton";
+// import StopButton from "../buttons/StopButton";
 import Volume from "../sliders/Volume";
 import BPM from "../sliders/BPM";
 import PowerOn from "../buttons/PowerOn";
@@ -14,7 +14,7 @@ import LeftIconBar from "../LeftIconBar/LeftIconBar";
 import RightBar from "../RightBar/RightBar";
 import Instructions from "../buttons/Instructions";
 
-const deepCopyInitialState = JSON.parse(JSON.stringify(initialState));
+// const deepCopyInitialState = JSON.parse(JSON.stringify(initialState));
 
 function Sequencer({ player, socket }) {
   const [sequence, setSequence] = useState(initialState);
@@ -24,28 +24,6 @@ function Sequencer({ player, socket }) {
   const [BPMcount, setBPMCount] = useState(100);
   const [stopped, setStopped] = useState(false);
   const [isShown, setIsShown] = useState(false);
-  const [pianoActive, setPianoActive] = useState(false);
-  const [bassActive, setBassActive] = useState(true);
-  const [drumsActive, setDrumsActive] = useState(true);
-
-  const leftBarLights = (line, step) => {
-    const sequenceCopy = [...sequence];
-    const { activated } = sequenceCopy[line][step];
-    console.log("activated", activated);
-    console.log("line", line);
-    console.log("step", step);
-    for (let i = 0; i < sequenceCopy[line].length; i++) {
-      if (activated && line < 5) {
-        setPianoActive(true);
-      } else if (activated && line >= 5 && line < 10) {
-        setBassActive(true);
-      } else if (activated && line >= 10) {
-        setDrumsActive(true);
-      } else {
-        setPianoActive(false);
-      }
-    }
-  };
 
   const resetSequence = () => {
     for (let i = 0; i < sequence.length; i++) {
@@ -64,7 +42,6 @@ function Sequencer({ player, socket }) {
     const { triggered, activated } = sequenceCopy[line][step];
     sequenceCopy[line][step] = { triggered, activated: !activated };
     setSequence(sequenceCopy);
-    leftBarLights(line, step);
   };
 
   const nextStep = (time) => {
@@ -124,7 +101,7 @@ function Sequencer({ player, socket }) {
         nextStep(currentStep);
       }
       setStopped(false);
-      console.log(playing);
+      // console.log(playing);
     };
     const stopMessage = (m) => {
       setPlaying(false);
@@ -203,9 +180,6 @@ function Sequencer({ player, socket }) {
       </NavBar>
       <RightBar />
       <LeftIconBar
-        pianoActive={pianoActive}
-        bassActive={bassActive}
-        drumsActive={drumsActive}
       />
       <Grid
         sequence={sequence}

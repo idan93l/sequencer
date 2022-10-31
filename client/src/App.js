@@ -3,8 +3,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { io } from "socket.io-client";
 import PlayerProvider from "./components/context/PlayerProvider";
 import Sequencer from "./components/Sequencer/Sequencer";
-import Loader from "./pages/Loader/Loader";
-import Rotate from "./pages/Rotate/Rotate";
+import Loader from "./components/Loader/Loader";
+import Rotate from "./components/Rotate/Rotate";
 import "./App.css";
 
 const socket = io.connect(

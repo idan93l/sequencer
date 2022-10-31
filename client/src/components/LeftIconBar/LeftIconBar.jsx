@@ -13,11 +13,9 @@ const Bar = styled.div`
     position: absolute;
 `;
 
-const Piano = styled.h1.attrs(({pianoActive}) => ({
-  style: {
-    color: pianoActive ? "#dbaf0e" : "white"
-  }
-}))`
+const Piano = styled.h1`
+  color: white;
+
   &::after {
     content: '';
     height: 37.5%;
@@ -67,10 +65,10 @@ const Drums = styled.h1`
   }
 `;
 
-export default function LeftIconBar({pianoActive}) {
+export default function LeftIconBar() {
   return (
     <Bar>
-      <Piano pianoActive={pianoActive}>
+      <Piano>
         <CgPiano />
       </Piano>
       <Bass>
